@@ -87,7 +87,7 @@ export const App: React.FC = () => {
 
             <div className="flex items-center gap-5 uppercase tracking-wider font-mono text-xs">
               <a
-                href="https://github.com/aravhraj"
+                href="https://github.com/aravh-raj"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors flex items-center gap-1"

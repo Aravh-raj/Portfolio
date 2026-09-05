@@ -72,7 +72,7 @@ const PROJECTS: ProjectData[] = [
       'Bidirectional WebSockets for Real-Time Audio Streaming & State Sync',
       'Hardware Resource Telemetry & Local System Constraint Awareness',
     ],
-    githubUrl: 'https://github.com/aravhraj',
+    githubUrl: 'https://github.com/aravh-raj',
     liveUrl: 'https://lisabella-v2.vercel.app/',
     schematic: {
       specFile: 'lisabella-v2 // cognitive.spec',
@@ -113,7 +113,7 @@ const PROJECTS: ProjectData[] = [
       'Automated vault reconciliation with multi-day opening balance carryover and audit logging',
       'Full Devanagari Hindi & English bilingual UI with instantaneous locale switching',
     ],
-    githubUrl: 'https://github.com/aravhraj',
+    githubUrl: 'https://github.com/aravh-raj',
     liveUrl: 'https://jagdamba-hotel.onrender.com',
     schematic: {
       specFile: 'jagdamba-hotel // enterprise.erp',
@@ -152,7 +152,7 @@ const PROJECTS: ProjectData[] = [
       'Floating AI assistant integration for instant financial workflow guidance',
       'Clean, high-performance responsive UI with instant dark/light mode switching',
     ],
-    githubUrl: 'https://github.com/aravhraj',
+    githubUrl: 'https://github.com/aravh-raj',
     liveUrl: 'https://fintrack-eight-jet.vercel.app/',
     schematic: {
       specFile: 'fintrack // analytics.core',

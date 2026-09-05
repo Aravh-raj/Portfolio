@@ -171,7 +171,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Secondary CTA: GitHub Profile */}
           <a
-            href="https://github.com/aravhraj"
+            href="https://github.com/aravh-raj"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest px-6 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm transition-all duration-300 hover:bg-[#D7E2EA]/10 hover:scale-105 active:scale-95 cursor-pointer select-none gap-1.5"
