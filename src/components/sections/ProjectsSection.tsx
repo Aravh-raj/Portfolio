@@ -1,7 +1,37 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FadeIn } from '../ui/FadeIn';
-import { ArrowUpRight, Github, Terminal, Cpu, Database, Network, ShieldCheck, Activity } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Github,
+  Terminal,
+  Cpu,
+  Database,
+  Network,
+  ShieldCheck,
+  Activity,
+  Receipt,
+  Boxes,
+  Wallet,
+  PieChart,
+  Lock,
+} from 'lucide-react';
+
+interface ProjectSchematicNode {
+  label: string;
+  icon: React.ReactNode;
+}
+
+interface ProjectSchematic {
+  specFile: string;
+  subsystemTitle: string;
+  subsystemStatus: string;
+  statusColor?: string;
+  nodes: ProjectSchematicNode[];
+  principle: string;
+  targetHost: string;
+  badge: string;
+}
 
 interface ProjectData {
   number: string;
@@ -13,16 +43,17 @@ interface ProjectData {
   keyHighlights: string[];
   githubUrl?: string;
   liveUrl?: string;
+  schematic: ProjectSchematic;
 }
 
 const PROJECTS: ProjectData[] = [
   {
     number: '01',
-    name: 'Lisabella-v2',
-    category: 'Flagship Architecture',
-    subtitle: 'Stateless Cognitive AI Orchestrator & Real-Time Desktop Assistant',
+    name: 'Lisabella v2.0',
+    category: 'Flagship Cognitive AI',
+    subtitle: 'Stateless Cognitive Architecture & Neural Workspace Interface',
     description:
-      'A real-time AI desktop assistant built around a stateless cognitive orchestration architecture, combining LLM-based perception and routing, persistent semantic memory (RAG), voice interaction, and real-time system telemetry. Engineered from first principles to challenge hardware constraints and run responsively within 8GB RAM environments.',
+      'A real-time cognitive AI desktop assistant built around a stateless cognitive orchestration architecture, combining LLM-based perception and routing, persistent vector memory (ChromaDB RAG), streaming audio, and real-time telemetry engineered for 8GB RAM environments.',
     techStack: [
       'Python 3.11',
       'FastAPI',
@@ -33,7 +64,7 @@ const PROJECTS: ProjectData[] = [
       'ChromaDB',
       'SQLAlchemy',
       'WebSockets',
-      'Asyncio',
+      'Tailwind CSS',
     ],
     keyHighlights: [
       'Stateless 6-Phase Processing Pipeline (Perception → Routing → Retrieval → Compilation → Execution → Telemetry)',
@@ -42,54 +73,101 @@ const PROJECTS: ProjectData[] = [
       'Hardware Resource Telemetry & Local System Constraint Awareness',
     ],
     githubUrl: 'https://github.com/aravhraj',
-    liveUrl: '#',
+    liveUrl: 'https://lisabella-v2.vercel.app/',
+    schematic: {
+      specFile: 'lisabella-v2 // cognitive.spec',
+      subsystemTitle: 'COGNITIVE PIPELINE',
+      subsystemStatus: 'ONLINE',
+      statusColor: 'text-cyan-400',
+      nodes: [
+        { label: 'Perception', icon: <Cpu className="w-3.5 h-3.5 text-purple-400 mx-auto mb-1" /> },
+        { label: 'Neural Memory', icon: <Database className="w-3.5 h-3.5 text-cyan-400 mx-auto mb-1" /> },
+        { label: 'Audio Stream', icon: <Network className="w-3.5 h-3.5 text-emerald-400 mx-auto mb-1" /> },
+      ],
+      principle: 'Stateless orchestration keeps memory footprint strictly predictable in 8GB RAM.',
+      targetHost: 'TARGET: LOCALHOST & CLOUD',
+      badge: 'STRICT CONTRACTS ENFORCED',
+    },
   },
   {
     number: '02',
-    name: 'AI Speech & Cognitive Engine',
-    category: 'Collaborative Project',
-    subtitle: 'Real-Time Voice Streaming & AI Model Integration',
+    name: 'Jagdamba Hotel ERP',
+    category: 'Full-Stack Enterprise System',
+    subtitle: 'Commercial Hospitality Operations, Daily Khatabook & Bi-Lingual ERP',
     description:
-      'Engineered the speech-recognition pipeline and AI model cognitive components as part of a collaborative Next.js web application. Handled client-side microphone streaming, bidirectional audio transport, and inference routing.',
+      'Comprehensive enterprise management platform engineered for hospitality operations. Combines commercial sales and expense ledgers, strict logical segregation of personal household finances, atomic inventory deduction, automated cash vault audits, staff payroll advances, and full Hindi/English internationalization.',
     techStack: [
-      'Next.js',
-      'React',
-      'Python',
-      'WebSockets',
-      'Speech Recognition APIs',
-      'FastAPI',
+      'React 19',
+      'Vite',
+      'Node.js',
+      'Express',
+      'PostgreSQL',
+      'Supabase',
+      'JWT Security',
+      'RBAC',
+      'Tailwind CSS',
     ],
     keyHighlights: [
-      'Engineered Speech-to-Text Audio Streaming Pipeline',
-      'Direct AI Model Integration & Inference Routing',
-      'Collaborative Team Development with Clean API Boundaries',
+      'Role-Based Access Control (Owner, Manager, Staff) with field-level commercial data masking',
+      'Daily sales, dynamic expense categorization, and atomic waste/spoilage deduction',
+      'Automated vault reconciliation with multi-day opening balance carryover and audit logging',
+      'Full Devanagari Hindi & English bilingual UI with instantaneous locale switching',
     ],
     githubUrl: 'https://github.com/aravhraj',
-    liveUrl: '#',
+    liveUrl: 'https://jagdamba-hotel.onrender.com',
+    schematic: {
+      specFile: 'jagdamba-hotel // enterprise.erp',
+      subsystemTitle: 'ENTERPRISE ERP CORE',
+      subsystemStatus: 'ACTIVE',
+      statusColor: 'text-emerald-400',
+      nodes: [
+        { label: 'Khatabook', icon: <Receipt className="w-3.5 h-3.5 text-emerald-400 mx-auto mb-1" /> },
+        { label: 'Atomic Stock', icon: <Boxes className="w-3.5 h-3.5 text-amber-400 mx-auto mb-1" /> },
+        { label: 'Tiered RBAC', icon: <ShieldCheck className="w-3.5 h-3.5 text-purple-400 mx-auto mb-1" /> },
+      ],
+      principle: 'Physical segregation of commercial P&L from household personal capital.',
+      targetHost: 'TARGET: RENDER & POSTGRESQL',
+      badge: 'BILINGUAL (EN/HI) OPERATIONAL',
+    },
   },
   {
     number: '03',
-    name: 'Full-Stack MERN Architecture',
-    category: 'Production Internship',
-    subtitle: 'Scalable REST API & Database Systems',
+    name: 'FinTrack',
+    category: 'Personal Finance Platform',
+    subtitle: 'Personal Finance Management & Categorical Spending Analytics',
     description:
-      'Comprehensive full-stack web application developed during my MERN stack internship. Implemented secure RESTful APIs, optimized MongoDB queries, and engineered reactive user interfaces with structured data validations.',
+      'Modern personal finance tracker designed to give individuals clear, immediate control over their cash flow. Features real-time income and expense tracking, categorical visual analytics, encrypted data persistence, dark/light theme adaptability, and an integrated assistant.',
     techStack: [
-      'MongoDB',
-      'Express.js',
       'React',
-      'Node.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'Vite',
       'REST APIs',
-      'Docker',
-      'Postman',
+      'Chart.js',
+      'Vercel',
     ],
     keyHighlights: [
-      'Normalized & Document Data Modeling in MongoDB',
-      'Modular Express.js Architecture with Authentication & Middleware',
-      'Structured Endpoint Verification & Contract Testing with Postman',
+      'Multi-category income and expense tracking with real-time balance calculations',
+      'Visual spending analytics with interactive reports to spot budget trends',
+      'Floating AI assistant integration for instant financial workflow guidance',
+      'Clean, high-performance responsive UI with instant dark/light mode switching',
     ],
     githubUrl: 'https://github.com/aravhraj',
-    liveUrl: '#',
+    liveUrl: 'https://fintrack-eight-jet.vercel.app/',
+    schematic: {
+      specFile: 'fintrack // analytics.core',
+      subsystemTitle: 'ANALYTICS ENGINE',
+      subsystemStatus: 'SYNCHRONIZED',
+      statusColor: 'text-cyan-400',
+      nodes: [
+        { label: 'Income & Expense', icon: <Wallet className="w-3.5 h-3.5 text-cyan-400 mx-auto mb-1" /> },
+        { label: 'Visual Reports', icon: <PieChart className="w-3.5 h-3.5 text-pink-400 mx-auto mb-1" /> },
+        { label: 'Encrypted Vault', icon: <Lock className="w-3.5 h-3.5 text-emerald-400 mx-auto mb-1" /> },
+      ],
+      principle: 'Real-time categorical granularity turns raw spending data into actionable financial clarity.',
+      targetHost: 'TARGET: VERCEL EDGE RUNTIME',
+      badge: 'END-TO-END RESPONSIVE',
+    },
   },
 ];
 
@@ -158,9 +236,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-white text-black font-semibold text-xs sm:text-sm uppercase tracking-wider hover:bg-purple-200 transition-colors"
+                className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-white text-black font-semibold text-xs sm:text-sm uppercase tracking-wider hover:bg-purple-200 transition-colors shadow-lg"
               >
-                Demo <ArrowUpRight className="w-4 h-4" />
+                Live Demo <ArrowUpRight className="w-4 h-4" />
               </a>
             )}
           </div>
@@ -168,7 +246,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
 
         {/* Bottom content: Technical Architecture Showcase */}
         <div className="pt-6 md:pt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {/* Left Column (5 Cols) - Deep Architecture Details */}
+          {/* Left Column (6 Cols) - Deep Architecture Details */}
           <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
             <div>
               <h4 className="text-sm sm:text-base font-semibold text-white/90 mb-2 font-mono">
@@ -216,7 +294,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
                 <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 <span className="ml-2 text-white/75 font-semibold text-[11px]">
-                  {project.name.toLowerCase()} // architecture.spec
+                  {project.schematic.specFile}
                 </span>
               </div>
               <Activity className="w-4 h-4 text-emerald-400 animate-pulse" />
@@ -226,22 +304,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
             <div className="space-y-3 text-xs leading-relaxed">
               <div className="p-3 rounded-xl bg-black/50 border border-white/5 space-y-1.5">
                 <div className="flex items-center justify-between text-[11px] text-[#D7E2EA]/50">
-                  <span>SUBSYSTEM PIPELINE</span>
-                  <span className="text-cyan-400">ONLINE</span>
+                  <span>{project.schematic.subsystemTitle}</span>
+                  <span className={project.schematic.statusColor || 'text-cyan-400'}>
+                    {project.schematic.subsystemStatus}
+                  </span>
                 </div>
                 <div className="grid grid-cols-3 gap-2 text-center text-[10px]">
-                  <div className="p-2 rounded bg-white/5 border border-white/5">
-                    <Cpu className="w-3.5 h-3.5 text-purple-400 mx-auto mb-1" />
-                    <span>Perception</span>
-                  </div>
-                  <div className="p-2 rounded bg-white/5 border border-white/5">
-                    <Database className="w-3.5 h-3.5 text-cyan-400 mx-auto mb-1" />
-                    <span>Vector RAG</span>
-                  </div>
-                  <div className="p-2 rounded bg-white/5 border border-white/5">
-                    <Network className="w-3.5 h-3.5 text-emerald-400 mx-auto mb-1" />
-                    <span>WebSocket</span>
-                  </div>
+                  {project.schematic.nodes.map((node, i) => (
+                    <div key={i} className="p-2 rounded bg-white/5 border border-white/5">
+                      {node.icon}
+                      <span>{node.label}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -250,16 +324,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
                   <Terminal className="w-3.5 h-3.5 text-purple-400" />
                   <span className="text-white">Design Principle:</span>
                 </div>
-                <p className="text-purple-300/90 pl-5">
-                  &quot;Stateless orchestration keeps memory footprint strictly predictable.&quot;
+                <p className="text-purple-300/90 pl-5 leading-relaxed">
+                  &quot;{project.schematic.principle}&quot;
                 </p>
               </div>
             </div>
 
             {/* Footer telemetry */}
             <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-[10px] text-[#D7E2EA]/50">
-              <span>TARGET_HOST: LOCALHOST / CLOUD</span>
-              <span className="text-emerald-400">STRICT CONTRACTS ENFORCED</span>
+              <span>{project.schematic.targetHost}</span>
+              <span className="text-emerald-400">{project.schematic.badge}</span>
             </div>
           </div>
         </div>
